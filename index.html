@@ -16,14 +16,22 @@
       min-height: 100vh;
     }
 
-    .card {
-      background: rgba(0,0,0,0.7);
-      padding: 40px;
-      border-radius: 16px;
-      max-width: 500px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    }
+.card {
+  background: rgba(0,0,0,0.75);
+  padding: 40px;
+  border-radius: 18px;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(249,196,6,0.15), 0 20px 60px rgba(0,0,0,0.7);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
 
     .logo {
       width: 220px;
@@ -57,8 +65,27 @@
   <div class="card">
     <img src="logo.png" alt="Southern Layers 3D Printing" class="logo">
 
+<div style="
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:999px;
+  background:#f9c406;
+  color:#000;
+  font-weight:bold;
+  font-size:12px;
+  margin-bottom:14px;
+">
+  Website in progress
+</div>
+
+    
     <h1>Southern Layers 3D Printing</h1>
 
+<p style="margin-top: 10px; font-size: 14px; color: #aaa;">
+  Our full website is currently being built. This is a temporary page while we finish updates.
+</p>
+
+    
 <p>
   Custom 3D printing, prototyping, and small-batch production.
   If you have an idea or a project you want brought to life, we can print it.
@@ -67,8 +94,11 @@
 
 <p class="contact">
   Contact: <br>
-  <a href="mailto:support@sl3dprinting.com" style="color:#1ed0f3; text-decoration:none;">
-    <strong>support@sl3dprinting.com</strong>
+<a href="mailto:support@sl3dprinting.com" style="color:#1ed0f3; text-decoration:none; transition:0.3s;">
+    <strong style="text-shadow:0 0 10px rgba(30,208,243,0.4);">
+  support@sl3dprinting.com
+</strong>
+
   </a>
 </p>
 
