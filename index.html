@@ -4,133 +4,124 @@
   <meta charset="UTF-8">
   <title>Southern Layers 3D Printing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  body {
-  margin: 0;
-  background: radial-gradient(circle at top, #1a2b35 0%, #0f1a20 70%);
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-}
 
-.card {
-  background: rgba(0,0,0,0.75);
-  padding: 32px 36px;
-  border-radius: 18px;
-  max-width: 520px;
-  text-align: center;
-  box-shadow: 0 0 40px rgba(249,196,6,0.18), 0 20px 60px rgba(0,0,0,0.8);
-  animation: float 6s ease-in-out infinite;
-}
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #1a2b35 0%, #0f1a20 70%);
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
-}
+    .card {
+      background: rgba(0,0,0,0.75);
+      padding: 32px 36px;
+      border-radius: 18px;
+      max-width: 520px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(249,196,6,0.18), 0 20px 60px rgba(0,0,0,0.8);
+      animation: float 6s ease-in-out infinite;
+    }
 
-.logo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-  border: 4px solid #f9c406;
-}
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
 
-.gear {
-  width: 46px;
-  height: 46px;
-  border: 6px solid #f9c406;
-  border-top: 6px solid transparent;
-  border-radius: 50%;
-  margin: 10px auto 14px;
-  animation: spin 2s linear infinite;
-}
+    .logo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 4px solid #f9c406;
+    }
 
-@keyframes spin {
-  100% { transform: rotate(360deg); }
-}
+    .gear {
+      width: 46px;
+      height: 46px;
+      border: 6px solid #f9c406;
+      border-top: 6px solid transparent;
+      border-radius: 50%;
+      margin: 10px auto 14px;
+      animation: spin 2s linear infinite;
+    }
 
-.badge {
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #f9c406, #ffdf6a);
-  color: #000;
-  font-weight: bold;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
 
-h1 {
-  margin: 8px 0 6px;
-  font-size: 26px;
-  color: #f9c406;
-}
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f9c406, #ffdf6a);
+      color: #000;
+      font-weight: bold;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
 
-.subline {
-  font-size: 14px;
-  color: #bbb;
-  margin-bottom: 12px;
-}
+    h1 {
+      margin: 8px 0 6px;
+      font-size: 26px;
+      color: #f9c406;
+    }
 
-p {
-  line-height: 1.5;
-  font-size: 15px;
-  opacity: 0.9;
-  margin: 10px 0;
-}
+    .subline {
+      font-size: 14px;
+      color: #bbb;
+      margin-bottom: 12px;
+    }
 
-.contact {
-  margin-top: 14px;
-  font-size: 17px;
-  color: #1ed0f3;
-}
+    p {
+      line-height: 1.5;
+      font-size: 15px;
+      opacity: 0.9;
+      margin: 10px 0;
+    }
 
+    .contact {
+      margin-top: 14px;
+      font-size: 17px;
+      color: #1ed0f3;
+    }
+  </style>
 </head>
+
 <body>
   <div class="card">
-   <img src="logo.png" alt="Southern Layers 3D Printing" class="logo">
+    <img src="logo.png" alt="Southern Layers 3D Printing" class="logo">
 
-<div class="gear"></div>
+    <div class="gear"></div>
 
-<div class="badge">Printing in progress</div>
+    <div class="badge">Printing in progress</div>
 
-<h1>Southern Layers 3D Printing</h1>
-
-<div class="subline">
-  We are currently calibrating our printers and finishing this site.
-</div>
-
-
-    
     <h1>Southern Layers 3D Printing</h1>
 
-<p style="margin-top: 10px; font-size: 14px; color: #aaa;">
-  Our full website is currently being built. This is a temporary page while we finish updates.
-</p>
+    <div class="subline">
+      We are currently calibrating our printers and finishing this site.
+    </div>
 
-    
-<p>
-  Custom 3D printing, prototyping, and small-batch production.
-  If you have an idea or a project you want brought to life, we can print it.
-</p>
+    <p>
+      Custom 3D printing, prototyping, and small-batch production.
+      If you have an idea or a project you want brought to life, we can print it.
+    </p>
 
-
-<p class="contact">
-  Contact: <br>
-<a href="mailto:support@sl3dprinting.com" style="color:#1ed0f3; text-decoration:none; transition:0.3s;">
-    <strong style="text-shadow:0 0 10px rgba(30,208,243,0.4);">
-  support@sl3dprinting.com
-</strong>
-
-  </a>
-</p>
-
+    <p class="contact">
+      Contact:<br>
+      <a href="mailto:support@sl3dprinting.com" style="color:#1ed0f3; text-decoration:none;">
+        <strong style="text-shadow:0 0 10px rgba(30,208,243,0.4);">
+          support@sl3dprinting.com
+        </strong>
+      </a>
+    </p>
   </div>
 </body>
 </html>
