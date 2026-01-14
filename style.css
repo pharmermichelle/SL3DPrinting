@@ -334,24 +334,39 @@ section {
 /* ===== Layer-by-Layer Logo ===== */
 .printing-logo {
   position: relative;
-  width: 280px;
-  height: 280px;
-  margin: 0 auto;
+  width: 340px;
+  height: 220px;              /* oval-friendly ratio */
   transform-style: preserve-3d;
+border-radius: 24px;
+  overflow: hidden; 
 }
 
 .logo-layer {
   position: absolute;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  clip-path: inset(calc(var(--layer) * 20%) 0 0 0);
-  animation: printLayer 2s ease-out forwards;
-  animation-delay: calc(var(--layer) * 0.3s);
-  opacity: 0;
-  transform: translateZ(calc(var(--layer) * -8px)) translateY(40px);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform:
+    translateZ(calc(var(--layer) * 8px))
+    scale(1.02);
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.45));
+  opacity: 0.92;
 }
+.printing-logo::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 28px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 200, 0, 0.15),
+    rgba(0,0,0,0)
+  );
+  z-index: -1;
+}
+
+
 
 @keyframes printLayer {
   to {
@@ -959,4 +974,5 @@ input[name="business"] {
   background: #000;      /* optional: helps if logo has transparency */
   padding: 4px;          /* breathing room */
 }
+
 
