@@ -1,0 +1,394 @@
+<!-- redeploy -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Southern Layers 3D Printing</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-progress"></div>
+      <div style="display: flex; align-items: center; gap: 1rem">
+        <img src="client-assets\SL3D_logo.jpg" alt="Southern Layers Logo" />
+        <strong>Southern Layers 3D Printing</strong>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Background effects -->
+    <div class="layer-lines"></div>
+    <!-- G-Code Path Background -->
+    <svg class="gcode-paths" xmlns="http://www.w3.org/2000/svg">
+      <!-- Path 1: Diagonal sweep -->
+      <path
+        class="gcode-path animate"
+        d="M 0,100 Q 200,150 400,120 T 800,100 L 1200,80"
+      />
+
+      <!-- Path 2: Curved infill pattern -->
+      <path
+        class="gcode-path animate"
+        d="M 100,300 Q 300,250 500,300 T 900,300 L 1400,320"
+      />
+
+      <!-- Path 3: Angular toolpath -->
+      <path
+        class="gcode-path animate"
+        d="M 0,500 L 200,480 L 400,520 L 600,490 L 800,510 L 1000,495 L 1200,505"
+      />
+
+      <!-- Path 4: Lower arc -->
+      <path
+        class="gcode-path animate"
+        d="M 150,700 Q 400,650 650,700 T 1150,700"
+      />
+
+      <!-- Path 5: Perimeter line -->
+      <path
+        class="gcode-path animate"
+        d="M 50,200 Q 250,180 450,200 Q 650,220 850,200 Q 1050,180 1250,200"
+      />
+
+      <!-- Path 6: Complex infill -->
+      <path
+        class="gcode-path animate"
+        d="M 0,400 C 150,380 250,420 400,400 S 650,380 800,400 S 1050,420 1200,400"
+      />
+    </svg>
+
+    <canvas id="nozzle-trail"></canvas>
+
+    <main>
+      <section id="home" class="hero">
+        <div>
+          <h1>Precision 3D Printing,<br />Built in Layers</h1>
+          <p>
+            Southern Layers 3D Printing, LLC delivers high-quality bulk 3D
+            printed products including keychains, necklaces, promotional items,
+            and custom designs.
+          </p>
+          <p>
+            <strong
+              >Bulk orders welcome. Consistent, repeatable quality.</strong
+            >
+          </p>
+          <ul style="margin-top: 1rem; line-height: 1.7">
+            <li>Ideal for events, teams, and promotions</li>
+            <li>Based in South Carolina</li>
+            <li>Veteran-owned small business</li>
+          </ul>
+          <a href="#contact" class="cta">Request a Quote</a>
+        </div>
+
+        <!-- Layer-by-layer logo animation -->
+        <div class="hero-visual" style="perspective: 800px">
+          <div class="printing-logo">
+            <img
+              src="client-assets\SL3D_logo.jpg"
+              alt="Southern Layers Logo"
+              class="logo-layer"
+              style="--layer: 0"
+            />
+            <img
+              src="client-assets\SL3D_logo.jpg"
+              alt=""
+              class="logo-layer"
+              style="--layer: 1"
+            />
+            <img
+              src="client-assets\SL3D_logo.jpg"
+              alt=""
+              class="logo-layer"
+              style="--layer: 2"
+            />
+            <img
+              src="client-assets\SL3D_logo.jpg"
+              alt=""
+              class="logo-layer"
+              style="--layer: 3"
+            />
+            <img
+              src="client-assets\SL3D_logo.jpg"
+              alt=""
+              class="logo-layer"
+              style="--layer: 4"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT'S MADE -->
+      <section id="process">
+        <h2>How It's Made</h2>
+        <div class="gallery">
+          <div class="card" style="text-align: center">
+            <h3>1. Submit Your Design</h3>
+            <p>
+              Send us your STL, logo, sketch, or even just an idea. We'll help
+              translate it into a printable design.
+            </p>
+          </div>
+          <div class="card" style="text-align: center">
+            <h3>2. Prep & Test</h3>
+            <p>
+              We optimize files for strength, consistency, and print quality,
+              then test before full production.
+            </p>
+          </div>
+          <div class="card" style="text-align: center">
+            <h3>3. Production Run</h3>
+            <p>
+              Your order is printed in controlled batches to ensure repeatable,
+              reliable results.
+            </p>
+          </div>
+          <div class="card" style="text-align: center">
+            <h3>4. Delivery</h3>
+            <p>
+              Finished products are packaged and ready for events, teams,
+              promotions, or distribution.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA BAND -->
+      <section style="margin: 0 0 6rem 0">
+        <div
+          class="card"
+          style="
+            text-align: center;
+            background: linear-gradient(135deg, var(--blue), var(--yellow));
+            color: #fff;
+          "
+        >
+          <h2 style="margin-top: 0">Need bulk pricing or a custom design?</h2>
+          <p style="font-size: 1.1rem">
+            Tell us what you need and we'll quote it.
+          </p>
+          <a href="#contact" class="cta" style="background: #fff; color: #000"
+            >Request a Quote</a
+          >
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section id="gallery">
+        <h2>Product Categories</h2>
+        <p style="max-width: 720px; opacity: 0.85">
+          Explore categories of past projects to spark ideas. Each category
+          showcases custom work we've produced — not a product catalog.
+        </p>
+
+        <div class="category-grid">
+          <a
+            href="sports.html"
+            class="category-tile"
+            data-images="Display_Organizer_1.png,Fan_Chain_Claw.png,Hockey_Puck_Display.png,Key_Rings.png,Team_Mascot_1.png"
+          >
+            <span>Sports Memorabilia</span>
+          </a>
+          <a
+            href="displays.html"
+            class="category-tile"
+            data-images="Display_Organizer_1.png,Display_Organizer_2.png,Display_Tower.png,Hockey_Puck_Display.png"
+          >
+            <span>Displays & Organizers</span>
+          </a>
+          <a
+            href="decor.html"
+            class="category-tile"
+            data-images="House_1.png,Snow_Globe_1.png,Village_1.png,Gargoyle_Bowl.png,Gargoyle_Statue.png,Dog_Statue.png,Grinch_Bowl.png"
+          >
+            <span>Decor & Collectibles</span>
+          </a>
+          <a
+            href="gifts.html"
+            class="category-tile"
+            data-images="Hockey_mask_killer.png,Dragon_Mini.png,Dog_Statue.png,Fidget_Ball.png,Fidget_2.png,Gargoyle_Statue.png,Gift_Box.png,Hand_Peace.png,Trash_Panda_Raccoon.png,Various_minis.png"
+          >
+            <span>Miniatures & Gifts</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2>Contact & Quotes</h2>
+        <div class="card">
+          <p style="margin-bottom: 1.5rem; opacity: 0.85">
+            Send us a message with your ideas and assets (if applicable). We'll
+            follow up with a quote or next steps.
+          </p>
+
+          <form id="quote-form" novalidate>
+            <input
+              type="text"
+              name="company_website"
+              tabindex="-1"
+              autocomplete="off"
+              style="display: none"
+            />
+
+            <input
+              type="text"
+              name="firstname"
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              name="lastname"
+              placeholder="Last Name"
+              required
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
+
+            <input
+              type="text"
+              name="business"
+              placeholder="Business Name (Optional)"
+            />
+
+            <textarea
+              name="notes"
+              rows="5"
+              placeholder="Project details, quantities, timeline, etc."
+              required
+            ></textarea>
+
+            <div class="file-upload">
+              <div class="file-upload-alt" style="grid-column: 1 / -1">
+                <p>
+                  <strong>Optional:</strong> Upload reference files (STL,
+                  images, logos)
+                </p>
+                <p class="upload-explainer">
+                  For larger files (STL, ZIPs, multiple images), we use a secure
+                  Google upload.
+                </p>
+
+                <a
+                  href="https://forms.gle/LiZDqs8FvrDeYpqQ7"
+                  target="_blank"
+                  rel="noopener"
+                  class="upload-btn"
+                >
+                  Optional:Upload Reference Files via Google Drive
+                </a>
+                <p class="upload-note">
+                  Opens in a new tab. Google sign-in required. You can submit
+                  the quote form without uploading files.
+                </p>
+
+                <p class="upload-note">
+                  Files open in a new tab and are securely sent to SL3D
+                  Printing.
+                </p>
+              </div>
+            </div>
+
+            <button type="submit" class="submit" id="submit-btn">
+              Send Quote Request
+            </button>
+
+            <div id="form-status" class="form-status" aria-live="polite"></div>
+          </form>
+
+          <p style="margin-top: 2rem">
+            <strong>Rob or Tina Tipton</strong><br />
+            Support@SL3DPrinting.com<br />
+            803-696-7650
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Southern Layers 3D Printing, LLC</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("c4SA3HrGy9F387thC");
+      })();
+
+      const form = document.getElementById("quote-form");
+      const submitBtn = document.getElementById("submit-btn");
+      const statusBox = document.getElementById("form-status");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Spam honeypot check
+        if (form.company_website.value !== "") {
+          return; // silently fail for bots
+        }
+
+        // Lock UI
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        statusBox.textContent = "";
+        statusBox.className = "form-status";
+
+        emailjs.sendForm("service_t93osje", "template_k5iis6e", form).then(
+          function () {
+            statusBox.textContent =
+              "Thanks! Your quote request was sent successfully.";
+            statusBox.classList.add("visible", "success");
+
+            submitBtn.textContent = "Sent ✓";
+            form.reset();
+
+            setTimeout(() => {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Send Quote Request";
+            }, 2500);
+          },
+          function (error) {
+            console.error("EmailJS error:", error);
+
+            statusBox.textContent =
+              "Something went wrong. Please try again or email us directly.";
+            statusBox.classList.add("visible", "error");
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send Quote Request";
+          }
+        );
+      });
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
