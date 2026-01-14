@@ -1,19 +1,21 @@
 // Format phone number as user types
 const phoneInput = document.querySelector('input[name="phone"]');
-phoneInput.addEventListener("input", (e) => {
-  let value = e.target.value.replace(/\D/g, "");
-  if (value.length > 10) value = value.slice(0, 10);
 
-  if (value.length >= 6) {
-    e.target.value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(
-      6
-    )}`;
-  } else if (value.length >= 3) {
-    e.target.value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
-  } else {
-    e.target.value = value;
-  }
-});
+if (phoneInput) {
+  phoneInput.addEventListener("input", (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length > 10) value = value.slice(0, 10);
+
+    if (value.length >= 6) {
+      e.target.value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6)}`;
+    } else if (value.length >= 3) {
+      e.target.value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+    } else {
+      e.target.value = value;
+    }
+  });
+}
+
 
 // Category tile image rotation
 document.querySelectorAll(".category-tile").forEach((tile) => {
@@ -28,26 +30,30 @@ document.querySelectorAll(".category-tile").forEach((tile) => {
 
 // Process cards scroll animation
 const processCards = document.querySelectorAll("#process .card");
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "translateY(0)";
-        }, index * 200);
-      }
-    });
-  },
-  { threshold: 0.2 }
-);
 
-processCards.forEach((card) => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(40px)";
-  card.style.transition = "all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
-  observer.observe(card);
-});
+if (processCards.length > 0) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }, index * 200);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  processCards.forEach((card) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(40px)";
+    card.style.transition = "all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    observer.observe(card);
+  });
+}
+
 
 // Nozzle trail (FIXED VERSION)
 const canvas = document.getElementById("nozzle-trail");
@@ -158,20 +164,22 @@ window.addEventListener("scroll", () => {
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector("nav");
 
-navToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
-
-// Close nav when clicking a link
-document.querySelectorAll("nav a").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
+if (navToggle && nav) {
+  navToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
   });
-});
 
-// Close nav when clicking outside
-document.addEventListener("click", (e) => {
-  if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
-    nav.classList.remove("active");
-  }
-});
+  document.querySelectorAll("nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("active");
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+      nav.classList.remove("active");
+    }
+  });
+}
+
+
