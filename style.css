@@ -945,3 +945,18 @@ input[name="business"] {
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
 }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand img {
+  height: 42px;          /* controls visual size */
+  width: auto;           /* preserves oval shape */
+  object-fit: contain;
+  border-radius: 10px;   /* softens edges without forcing a circle */
+  background: #000;      /* optional: helps if logo has transparency */
+  padding: 4px;          /* breathing room */
+}
+
