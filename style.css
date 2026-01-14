@@ -960,6 +960,21 @@ input[name="business"] {
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
 }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, #163a3f, #caa200);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -970,9 +985,48 @@ input[name="business"] {
   height: 42px;          /* controls visual size */
   width: auto;           /* preserves oval shape */
   object-fit: contain;
-  border-radius: 10px;   /* softens edges without forcing a circle */
-  background: #000;      /* optional: helps if logo has transparency */
-  padding: 4px;          /* breathing room */
+}
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #f5c400;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  transform: scaleX(1);
+}
+
+/* Mobile toggle (hidden on desktop) */
+.nav-toggle {
+  display: none;
+}
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
 }
 
 
