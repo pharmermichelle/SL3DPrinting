@@ -5,6 +5,76 @@
   --text: #f5f5f5;
   --card: rgba(30, 54, 66, 0.7);
   --border: rgba(255, 255, 255, 0.12);
+  --header-height: 78px;
+}
+
+/* ================= HEADER ================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  height: var(--header-height);
+  width: 100%;
+
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--blue) 85%, transparent),
+    color-mix(in srgb, var(--yellow) 85%, transparent)
+  );
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 3px solid transparent;
+
+  display: flex;
+  align-items: center;
+}
+
+/* Keep content above animated layers */
+.site-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animated layer lines */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.06) 3px,
+    rgba(255, 255, 255, 0.06) 6px
+  );
+  animation: slideLines 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animated bottom border */
+.site-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--yellow), var(--blue));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+/* Scrolled state */
+.site-header.scrolled {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.site-header.scrolled::after {
+  animation-duration: 2s;
 }
 
 * {
@@ -49,43 +119,6 @@ li {
   line-height: 1.55;
 }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  /* Removed backdrop-filter and overflow:hidden from here so the menu can escape! */
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--blue) 85%, transparent),
-    color-mix(in srgb, var(--yellow) 85%, transparent)
-  );
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  border-bottom: 3px solid transparent;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-/* Animated layer lines in header */
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 3px,
-    rgba(255, 255, 255, 0.06) 3px,
-    rgba(255, 255, 255, 0.06) 6px
-  );
-  animation: slideLines 20s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
 @keyframes slideLines {
   0% {
     transform: translateX(0);
@@ -93,19 +126,6 @@ header::before {
   100% {
     transform: translateX(60px);
   }
-}
-
-/* Bottom border animation */
-header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--yellow), var(--blue));
-  background-size: 200% 100%;
-  animation: gradientShift 3s ease-in-out infinite;
 }
 
 @keyframes gradientShift {
@@ -116,22 +136,6 @@ header::after {
   50% {
     background-position: 100% 50%;
   }
-}
-
-/* Ensure content stays above animations */
-header > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Logo spin animation on hover */
-header img {
-  height: 56px;
-  border-radius: 50%;
-  background: #fff;
-  padding: 4px;
-  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  animation: subtleRotate 8s ease-in-out infinite;
 }
 
 @keyframes subtleRotate {
@@ -147,12 +151,12 @@ header img {
   }
 }
 
-header img:hover {
+.site-header img:hover {
   transform: rotate(360deg) scale(1.1);
 }
 
 /* Company name typing effect (optional) */
-header strong {
+.site-header strong {
   background: linear-gradient(90deg, #fff, var(--yellow), #fff, var(--yellow));
   background-size: 200% 100%;
   background-clip: text;
@@ -182,22 +186,26 @@ header strong {
   box-shadow: 0 0 10px var(--yellow);
 }
 
-/* Scroll indicator - stronger separation */
-header.scrolled {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px);
-}
-
-header.scrolled::after {
-  animation: gradientShift 2s ease-in-out infinite;
-}
-
 main {
   max-width: 1200px;
   margin: auto;
   padding: 1.5rem 1.5rem;
   position: relative;
   z-index: 1;
+  padding-top: calc(var(--header-height) + 1rem);
+}
+@media (max-height: 700px) {
+  main {
+    padding-top: calc(var(--header-height) + 0.5rem);
+  }
+
+  .hero {
+    gap: 1.75rem;
+  }
+
+  .hero-visual {
+    margin-top: 0.5rem;
+  }
 }
 
 section {
@@ -372,6 +380,7 @@ section {
 .printing-logo {
   position: relative;
   width: 300px;
+  min-height: 300px;
   height: auto; /* 👈 let image define shape */
   transform-style: preserve-3d;
   animation: heroFloat 7s ease-in-out infinite;
@@ -945,17 +954,6 @@ input[name="business"] {
   background: rgba(255, 255, 255, 0.03);
 }
 
-.site-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  left: 0;
-  right: 0;
-
-  z-index: 1000;
-  background: linear-gradient(90deg, #163a3f, #caa200);
-}
-
 .header-inner {
   display: flex;
   align-items: center;
@@ -969,8 +967,16 @@ input[name="business"] {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  max-width: calc(100% - 80px);
+  min-width: 0;
+  max-width: calc(100% - 72px);
   position: relative;
+}
+.brand strong {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Oval gradient halo behind header logo */
@@ -1005,6 +1011,15 @@ input[name="business"] {
   border-radius: 0; /* remove forced circle */
   position: relative;
   z-index: 1;
+}
+@media (max-width: 600px) {
+  .brand strong {
+    font-size: 0.95rem;
+  }
+
+  .brand img {
+    height: 38px;
+  }
 }
 
 /* ===== Universal Hamburger Navigation ===== */
