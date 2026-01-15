@@ -172,3 +172,27 @@ if (navToggle && mainNav) {
     mainNav.classList.toggle("active");
   });
 }
+// Close nav when clicking a link
+document.querySelectorAll(".main-nav a").forEach((link) => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("active");
+  });
+});
+
+// Close nav when clicking outside
+document.addEventListener("click", (e) => {
+  if (
+    mainNav.classList.contains("active") &&
+    !mainNav.contains(e.target) &&
+    !navToggle.contains(e.target)
+  ) {
+    mainNav.classList.remove("active");
+  }
+});
+
+// Close nav on scroll
+window.addEventListener("scroll", () => {
+  if (mainNav.classList.contains("active")) {
+    mainNav.classList.remove("active");
+  }
+});
