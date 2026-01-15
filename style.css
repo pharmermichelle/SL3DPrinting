@@ -182,42 +182,6 @@ header strong {
   box-shadow: 0 0 10px var(--yellow);
 }
 
-/* Nav link hover effects with underline animation */
-nav a {
-  color: #fff;
-  margin-left: 1.2rem;
-  text-decoration: none;
-  font-weight: 600;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-nav a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--yellow);
-  transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-nav a:hover {
-  color: var(--yellow);
-}
-nav a.active {
-  color: var(--yellow);
-}
-
-nav a.active::after {
-  width: 100%;
-}
-
 /* Scroll indicator - stronger separation */
 header.scrolled {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
@@ -231,21 +195,94 @@ header.scrolled::after {
 main {
   max-width: 1200px;
   margin: auto;
-  padding: 4rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   position: relative;
   z-index: 1;
 }
 
 section {
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   position: relative;
+}
+#process {
+  margin-top: 1.25rem; /* instead of inheriting huge gap */
+}
+
+#home {
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 900px) {
+  #home {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero::after {
+    opacity: 0.35;
+  }
 }
 
 .hero {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  align-items: center;
+  gap: 2.5rem;
+  align-items: start; /* 👈 THIS is the key */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  min-height: auto;
+  position: relative;
+}
+
+.hero-visual {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  perspective: 800px;
+  margin-top: 1.25rem; /* aligns logo with headline */
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-visual {
+    margin-top: 0;
+  }
+
+  .printing-logo {
+    width: 240px;
+  }
+}
+
+.full-width-p {
+  position: relative; /* 👈 REQUIRED */
+  max-width: 1200px;
+  margin: 0 auto 0.75rem;
+  padding: 0 1.5rem;
+  max-width: 100%;
+  text-align: center;
+}
+
+.full-width-p::after {
+  content: "";
+  display: block;
+  margin-top: 0.5rem;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(249, 196, 6, 0.35),
+    transparent
+  );
+  opacity: 0.6;
 }
 
 /* ===== Cards ===== */
@@ -334,49 +371,55 @@ section {
 /* ===== Layer-by-Layer Logo ===== */
 .printing-logo {
   position: relative;
-  width: 340px;
-  height: 220px;              /* oval-friendly ratio */
+  width: 300px;
+  height: auto; /* 👈 let image define shape */
   transform-style: preserve-3d;
-border-radius: 24px;
-  overflow: hidden; 
+  animation: heroFloat 7s ease-in-out infinite;
+  overflow: visible; /* 👈 no clipping */
 }
 
 .logo-layer {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
-  transform:
-    translateZ(calc(var(--layer) * 8px))
-    scale(1.02);
-  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.45));
-  opacity: 0.92;
+  transform: translateZ(calc(var(--layer) * 8px)) scale(1.02);
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
+  opacity: 0.95;
 }
 .printing-logo::before {
   content: "";
   position: absolute;
-  inset: -12px;
-  border-radius: 28px;
+  inset: -40px;
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 200, 0, 0.15),
-    rgba(0,0,0,0)
+    rgba(249, 196, 6, 0.22),
+    rgba(20, 60, 68, 0.18),
+    transparent 70%
   );
+  filter: blur(24px);
   z-index: -1;
+  pointer-events: none;
 }
 
-
-
-@keyframes printLayer {
-  to {
-    opacity: 1;
-    transform: translateZ(calc(var(--layer) * -8px)) translateY(0);
+@keyframes heroFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
 .logo-layer:last-child {
   filter: drop-shadow(0 0 12px rgba(249, 196, 6, 0.6));
+}
+.printing-logo:hover {
+  animation-play-state: paused;
 }
 
 /* ===== Gallery ===== */
@@ -740,8 +783,8 @@ input[name="business"] {
 /* ===== Category/Product Pages ===== */
 
 .breadcrumb {
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
+  margin: 1.5rem 1.25rem;
+  font-size: 0.9rem;
   opacity: 0.7;
 }
 
@@ -893,66 +936,7 @@ input[name="business"] {
     grid-template-columns: 1fr;
   }
 }
-/* Mobile Navigation */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1001; /* Above header */
-}
 
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-
-  nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 250px;
-    height: 100vh;
-    /* Ensure opacity is high enough to see */
-    background: linear-gradient(
-      135deg,
-      rgba(20, 60, 68, 0.98),
-      rgba(249, 196, 6, 0.95)
-    );
-    backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    padding: 6rem 0 2rem 0; /* Top padding clears the header */
-    transition: right 0.3s ease;
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
-    z-index: 1002; /* Must be higher than header (1000) and toggle (1001) */
-  }
-
-  nav.active {
-    right: 0;
-  }
-
-  nav a {
-    margin: 0;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background 0.2s ease, padding-left 0.2s ease;
-    color: #fff; /* Ensure text is visible */
-  }
-
-  nav a:hover,
-  nav a.active {
-    background: rgba(255, 255, 255, 0.1);
-    padding-left: 2.5rem;
-  }
-
-  nav a::after {
-    display: none; /* Remove underline on mobile */
-  }
-}
 .file-upload-alt {
   margin-top: 1rem;
   padding: 1rem 1.25rem;
@@ -964,6 +948,10 @@ input[name="business"] {
 .site-header {
   position: sticky;
   top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+
   z-index: 1000;
   background: linear-gradient(90deg, #163a3f, #caa200);
 }
@@ -972,61 +960,111 @@ input[name="business"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.25rem;
+  width: 100%; /* ← THIS is the missing piece */
+  max-width: 100%; /* prevent inherited constraints */
+  padding: 0.75rem 1.5rem;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.brand img {
-  height: 42px;          /* controls visual size */
-  width: auto;           /* preserves oval shape */
-  object-fit: contain;
-}
-.main-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
+  max-width: calc(100% - 80px);
   position: relative;
 }
 
-.main-nav a::after {
+/* Oval gradient halo behind header logo */
+.brand::before {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 2px;
-  background: #f5c400;
-  transform: scaleX(0);
-  transition: transform 0.25s ease;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 70px;
+  height: 46px;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(20, 60, 68, 0.55),
+    rgba(20, 60, 68, 0.15),
+    rgba(20, 60, 68, 0)
+  );
+
+  filter: blur(6px);
+  z-index: 0;
+  pointer-events: none;
 }
 
-.main-nav a:hover::after,
-.main-nav a.active::after {
-  transform: scaleX(1);
+.brand img {
+  height: 42px; /* controls visual size */
+  width: auto; /* preserves oval shape */
+  object-fit: contain;
+  background: none; /* removes white */
+  padding: 0; /* removes circle spacing */
+  border-radius: 0; /* remove forced circle */
+  position: relative;
+  z-index: 1;
 }
 
-/* Mobile toggle (hidden on desktop) */
+/* ===== Universal Hamburger Navigation ===== */
+
 .nav-toggle {
-  display: none;
+  display: block; /* ALWAYS visible */
+  background: none;
+  border: none;
+  color: #fff;
+  margin-left: auto;
+  position: relative;
+  right: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1100;
 }
-@media (max-width: 768px) {
-  .main-nav {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: block;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
+.nav-toggle:hover {
+  color: var(--yellow);
 }
 
+/* Slide-out menu */
+.main-nav {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(20, 60, 68, 0.98),
+    rgba(249, 196, 6, 0.95)
+  );
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  padding: 4.5rem 0 1.5rem;
+  transition: right 0.3s ease;
+  z-index: 1050;
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.6);
+}
 
+.main-nav.active {
+  right: 0;
+}
+
+.main-nav a {
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.main-nav a:last-child {
+  border-bottom: none;
+}
+
+.main-nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--yellow);
+}

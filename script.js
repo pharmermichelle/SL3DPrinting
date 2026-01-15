@@ -7,7 +7,10 @@ if (phoneInput) {
     if (value.length > 10) value = value.slice(0, 10);
 
     if (value.length >= 6) {
-      e.target.value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6)}`;
+      e.target.value = `(${value.slice(0, 3)}) ${value.slice(
+        3,
+        6
+      )}-${value.slice(6)}`;
     } else if (value.length >= 3) {
       e.target.value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
     } else {
@@ -15,7 +18,6 @@ if (phoneInput) {
     }
   });
 }
-
 
 // Category tile image rotation
 document.querySelectorAll(".category-tile").forEach((tile) => {
@@ -53,7 +55,6 @@ if (processCards.length > 0) {
     observer.observe(card);
   });
 }
-
 
 // Nozzle trail (FIXED VERSION)
 const canvas = document.getElementById("nozzle-trail");
@@ -152,6 +153,7 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
 // Scroll progress bar
 window.addEventListener("scroll", () => {
   const progressBar = document.querySelector(".header-progress");
@@ -160,26 +162,13 @@ window.addEventListener("scroll", () => {
   const scrolled = (window.pageYOffset / windowHeight) * 100;
   progressBar.style.width = `${scrolled}%`;
 });
-// Mobile navigation toggle
+
+// Hamburger navigation toggle
 const navToggle = document.querySelector(".nav-toggle");
-const nav = document.querySelector("nav");
+const mainNav = document.querySelector(".main-nav");
 
-if (navToggle && nav) {
+if (navToggle && mainNav) {
   navToggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
-  });
-
-  document.querySelectorAll("nav a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("active");
-    });
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
-      nav.classList.remove("active");
-    }
+    mainNav.classList.toggle("active");
   });
 }
-
-

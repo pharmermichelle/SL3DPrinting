@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gifts & Miniatures | Southern Layers 3D Printing</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="client-assets/favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="client-assets/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="client-assets/favicon.ico"
+    />
+    <link rel="apple-touch-icon" href="client-assets/favicon.ico" />
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,17 +34,25 @@
 
   <body>
     <!-- Header (matches main site) -->
-    <header>
+    <header class="site-header">
       <div class="header-progress"></div>
-      <div style="display: flex; align-items: center; gap: 1rem">
-<div class="brand">
-  <img src="client-assets/sl3d_logo.png" alt="Southern Layers Logo" />
-  <strong>Southern Layers 3D Printing</strong>
-</div>
-      </div>
-      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
 
-      <nav>
+      <div class="header-inner">
+        <!-- Brand -->
+        <div class="brand">
+          <img
+            src="client-assets/sl3d_logo.png"
+            alt="Southern Layers 3D Printing"
+          />
+          <strong>Southern Layers 3D Printing</strong>
+        </div>
+
+        <!-- Hamburger (always visible) -->
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      </div>
+
+      <!-- Slide-out menu -->
+      <nav class="main-nav">
         <a href="index.html#home">Home</a>
         <a href="index.html#gallery">Gallery</a>
         <a href="index.html#contact">Contact</a>
@@ -323,8 +347,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
-
-
-
-
