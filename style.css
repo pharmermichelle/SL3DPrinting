@@ -201,7 +201,7 @@ main {
 }
 @media (max-height: 700px) {
   main {
-    padding-top: 0.5rem;
+    padding-top: 1rem;
   }
 
   .hero {
