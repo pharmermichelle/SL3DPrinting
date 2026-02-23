@@ -1260,3 +1260,30 @@ input[name="business"] {
 .product-image {
   cursor: zoom-in;
 }
+
+/* ===== Gallery Section Labels ===== */
+.gallery-label {
+  margin-top: 2.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.gallery-label:first-of-type {
+  margin-top: 1.5rem;
+}
+
+/* Sublimation grid — single tile, don't stretch full width */
+.category-grid--sublimation {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  max-width: 320px;
+}
+
+@media (max-width: 900px) {
+  .category-grid--sublimation {
+    max-width: 100%;
+  }
+}
