@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -25,18 +25,6 @@
     <meta
       property="og:image"
       content="https://sl3dprinting.com/client-assets/sl3d_logo.png"
-    />
-
-    <!-- Twitter/X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Southern Layers 3D Printing" />
-    <meta
-      name="twitter:description"
-      content="High-quality bulk 3D printing in South Carolina — custom promotional items, keychains, displays, and more."
-    />
-    <meta
-      name="twitter:image"
-      content="https://sl3dprinting.com/client-assets/og-image.jpg"
     />
 
     <!-- Favicon -->
@@ -73,12 +61,172 @@
         "telephone": "+1-803-696-7650",
         "areaServed": "South Carolina",
         "description": "High-quality bulk 3D printing for promotional items, keychains, necklaces, displays, and custom designs.",
-        "image": "https://sl3dprinting.com/client-assets/og-image.jpg"
+        "image": "https://sl3dprinting.com/client-assets/og-image.jpg",
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61586497422156",
+          "https://www.instagram.com/southernlayers3dprinting/"
+        ]
       }
     </script>
+    <style>
+      /* Floating Social Sidebar */
+      .social-float {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .social-float a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        color: #fff;
+        transition: width 0.3s ease;
+      }
+      .social-float a:first-child {
+        background: #1877f2;
+        border-radius: 8px 0 0 0;
+      }
+
+      .social-float a:last-child {
+        background: linear-gradient(
+          45deg,
+          #f09433,
+          #e6683c,
+          #dc2743,
+          #cc2366,
+          #bc1888
+        );
+        border-radius: 0 0 0 8px;
+      }
+
+      .social-float a:hover {
+        width: 60px;
+      }
+
+      @media (max-width: 768px) {
+        .social-float {
+          top: auto;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          transform: none;
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .social-float a {
+          width: 50%;
+          height: 44px;
+          border-radius: 0;
+        }
+
+        .social-float a:hover {
+          width: 50%;
+        }
+
+        footer {
+          padding-bottom: 50px;
+        }
+      }
+
+      /* Hero Social Buttons */
+      .hero-social {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+
+      .hero-social p {
+        width: 100%;
+        margin: 0;
+      }
+
+      .social-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .social-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .social-btn--fb {
+        background: #1877f2;
+      }
+
+      .social-btn--ig {
+        background: linear-gradient(
+          45deg,
+          #f09433,
+          #e6683c,
+          #dc2743,
+          #cc2366,
+          #bc1888
+        );
+      }
+    </style>
   </head>
 
   <body id="top">
+    <div class="social-float">
+      <a
+        href="https://www.facebook.com/profile.php?id=61586497422156"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          width="24"
+          height="24"
+        >
+          <path
+            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+          />
+        </svg>
+      </a>
+      <a
+        href="https://www.instagram.com/southernlayers3dprinting/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          width="24"
+          height="24"
+        >
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.92 4.92 0 0 1 1.675 1.09 4.92 4.92 0 0 1 1.09 1.675c.163.46.349 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.92 4.92 0 0 1-1.09 1.675 4.92 4.92 0 0 1-1.675 1.09c-.46.163-1.26.349-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.92 4.92 0 0 1-1.675-1.09 4.92 4.92 0 0 1-1.09-1.675c-.163-.46-.349-1.26-.403-2.43C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.92 4.92 0 0 1 1.09-1.675A4.92 4.92 0 0 1 5.4 2.636c.46-.163 1.26-.349 2.43-.403C9.096 2.175 9.476 2.163 12 2.163zm0 4.988a4.85 4.85 0 1 0 0 9.7 4.85 4.85 0 0 0 0-9.7zm0 1.838a3.012 3.012 0 1 1 0 6.024 3.012 3.012 0 0 1 0-6.024zm5.04-2.261a1.134 1.134 0 1 0-2.268 0 1.134 1.134 0 0 0 2.268 0z"
+          />
+        </svg>
+      </a>
+    </div>
     <header class="site-header">
       <div class="header-progress"></div>
 
@@ -159,6 +307,49 @@
             <li>Based in South Carolina</li>
             <li>Veteran-owned small business</li>
           </ul>
+          <div class="hero-social">
+            <p style="margin-bottom: 0.5rem; font-size: 0.95rem; opacity: 0.85">
+              Follow our work:
+            </p>
+            <a
+              href="https://www.facebook.com/profile.php?id=61586497422156"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn social-btn--fb"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                />
+              </svg>
+              Facebook
+            </a>
+            <a
+              href="https://www.instagram.com/southernlayers3dprinting/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn social-btn--ig"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.92 4.92 0 0 1 1.675 1.09 4.92 4.92 0 0 1 1.09 1.675c.163.46.349 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.92 4.92 0 0 1-1.09 1.675 4.92 4.92 0 0 1-1.675 1.09c-.46.163-1.26.349-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.92 4.92 0 0 1-1.675-1.09 4.92 4.92 0 0 1-1.09-1.675c-.163-.46-.349-1.26-.403-2.43C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.92 4.92 0 0 1 1.09-1.675A4.92 4.92 0 0 1 5.4 2.636c.46-.163 1.26-.349 2.43-.403C9.096 2.175 9.476 2.163 12 2.163zm0 4.988a4.85 4.85 0 1 0 0 9.7 4.85 4.85 0 0 0 0-9.7zm0 1.838a3.012 3.012 0 1 1 0 6.024 3.012 3.012 0 0 1 0-6.024zm5.04-2.261a1.134 1.134 0 1 0-2.268 0 1.134 1.134 0 0 0 2.268 0z"
+                />
+              </svg>
+              Instagram
+            </a>
+          </div>
           <p><strong>Bulk orders welcome. </strong></p>
         </div>
 
@@ -455,7 +646,7 @@
 
             submitBtn.disabled = false;
             submitBtn.textContent = "Send Quote Request";
-          }
+          },
         );
       });
     </script>
