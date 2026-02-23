@@ -97,7 +97,8 @@ html {
 body {
   margin: 0;
   font-family: "Inter", system-ui, sans-serif;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at top right,
       rgba(242, 201, 76, 0.18),
       transparent 45%
@@ -109,7 +110,9 @@ body {
     ),
     var(--bg);
   color: var(--text);
-  transition: background 0.4s ease, color 0.4s ease;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
 }
 
 /* ===== Typography ===== */
@@ -318,7 +321,9 @@ section {
   border: 1px solid var(--border);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
   transform-style: preserve-3d;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   position: relative;
 }
 
@@ -332,7 +337,8 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
+  background-image:
+    repeating-linear-gradient(
       45deg,
       transparent,
       transparent 10px,
@@ -367,7 +373,9 @@ section {
   color: #000;
   background: var(--yellow);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
 }
@@ -491,7 +499,9 @@ section {
   background-repeat: no-repeat; /* Prevent tiling */
   background-position: center;
   background-color: rgba(0, 0, 0, 0.3); /* Fill empty space */
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
     background-size 0.3s ease;
   border: 2px solid transparent;
 }
@@ -620,7 +630,9 @@ textarea::placeholder {
   color: var(--text);
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .upload-btn:hover {
@@ -640,7 +652,9 @@ textarea::placeholder {
   font-weight: 600;
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .form-status.visible {
@@ -676,7 +690,9 @@ textarea::placeholder {
   font-size: 1.05rem;
   cursor: pointer;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .submit:hover {
@@ -893,7 +909,9 @@ input[name="business"] {
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -1092,7 +1110,9 @@ input[name="business"] {
   opacity: 0;
   pointer-events: none;
 
-  transition: transform 0.25s ease, opacity 0.2s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
   z-index: 1050;
 }
 
@@ -1148,7 +1168,9 @@ input[name="business"] {
   position: relative;
   overflow: hidden;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 /* Underline animation (same behavior as .cta) */
@@ -1174,4 +1196,67 @@ input[name="business"] {
 .submit.submit--cta:disabled {
   background: rgba(255, 255, 255, 0.75);
   color: rgba(0, 0, 0, 0.7);
+}
+
+/* ===== Image Lightbox ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+.lightbox.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.lightbox.active img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.7;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 10001;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Make product images show a zoom cursor */
+.product-image {
+  cursor: zoom-in;
 }

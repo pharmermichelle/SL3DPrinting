@@ -1,5 +1,5 @@
 <!-- redeploy -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -130,7 +130,7 @@
             <div
               class="product-image"
               style="
-                background-image: url('client-assets/Display_Organizer_1.png');
+                background-image: url(&quot;client-assets/Display_Organizer_1.png&quot;);
               "
             >
               <div class="product-overlay">
@@ -151,7 +151,7 @@
             <div
               class="product-image"
               style="
-                background-image: url('client-assets/Display_Organizer_2.png');
+                background-image: url(&quot;client-assets/Display_Organizer_2.png&quot;);
               "
             >
               <div class="product-overlay">
@@ -171,7 +171,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Display_Tower.png')"
+              style="
+                background-image: url(&quot;client-assets/Display_Tower.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Stacked with precision 🏗️</span>
@@ -191,7 +193,7 @@
             <div
               class="product-image"
               style="
-                background-image: url('client-assets/Hockey_Puck_Display.png');
+                background-image: url(&quot;client-assets/Hockey_Puck_Display.png&quot;);
               "
             >
               <div class="product-overlay">
@@ -236,6 +238,11 @@
     </main>
 
     <footer>© 2026 Southern Layers 3D Printing, LLC</footer>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" style="display: none">
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+      <img alt="Expanded product view" />
+    </div>
 
     <script src="script.js"></script>
   </body>

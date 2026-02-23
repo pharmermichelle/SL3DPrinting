@@ -9,7 +9,7 @@ if (phoneInput) {
     if (value.length >= 6) {
       e.target.value = `(${value.slice(0, 3)}) ${value.slice(
         3,
-        6
+        6,
       )}-${value.slice(6)}`;
     } else if (value.length >= 3) {
       e.target.value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
@@ -45,7 +45,7 @@ if (processCards.length > 0) {
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.2 },
   );
 
   processCards.forEach((card) => {
@@ -107,7 +107,7 @@ function scaleGCodePaths() {
   if (svg) {
     svg.setAttribute(
       "viewBox",
-      `0 0 ${window.innerWidth} ${window.innerHeight}`
+      `0 0 ${window.innerWidth} ${window.innerHeight}`,
     );
   }
 }
@@ -196,3 +196,55 @@ window.addEventListener("scroll", () => {
     mainNav.classList.remove("active");
   }
 });
+
+/* ===== Image Lightbox ===== */
+(function () {
+  const lightbox = document.getElementById("lightbox");
+  if (!lightbox) return;
+
+  const lightboxImg = lightbox.querySelector("img");
+  const lightboxClose = lightbox.querySelector(".lightbox-close");
+
+  // Open lightbox when clicking a product image
+  document.querySelectorAll(".product-image").forEach(function (el) {
+    el.addEventListener("click", function () {
+      const bg = el.style.backgroundImage;
+      const url = bg.replace(/url\(['"]?(.*?)['"]?\)/, "\$1");
+
+      if (url) {
+        lightboxImg.src = url;
+        lightbox.style.display = "flex";
+        // Small delay so the browser registers display:flex before fading in
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            lightbox.classList.add("active");
+          });
+        });
+        document.body.style.overflow = "hidden";
+      }
+    });
+  });
+
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && lightbox.classList.contains("active")) {
+      closeLightbox();
+    }
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+    setTimeout(function () {
+      lightbox.style.display = "none";
+      lightboxImg.src = "";
+    }, 300);
+  }
+})();

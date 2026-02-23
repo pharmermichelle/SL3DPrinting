@@ -1,5 +1,5 @@
 <!-- redeploy -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -130,7 +130,7 @@
             <div
               class="product-image"
               style="
-                background-image: url('client-assets/Hockey_mask_killer.png');
+                background-image: url(&quot;client-assets/Hockey_mask_killer.png&quot;);
               "
             >
               <div class="product-overlay">
@@ -150,7 +150,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Dragon_Mini.png')"
+              style="
+                background-image: url(&quot;client-assets/Dragon_Mini.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Fire-breathing filament 🐉</span>
@@ -169,7 +171,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Fidget_Ball.png')"
+              style="
+                background-image: url(&quot;client-assets/Fidget_Ball.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Stress-tested layers 🌀</span>
@@ -188,7 +192,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Fidget_2.png')"
+              style="
+                background-image: url(&quot;client-assets/Fidget_2.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Built to keep hands busy ✋</span>
@@ -207,7 +213,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Gargoyle_Statue.png')"
+              style="
+                background-image: url(&quot;client-assets/Gargoyle_Statue.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Guarded by great layers 🛡️</span>
@@ -226,7 +234,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Dog_Statue.png')"
+              style="
+                background-image: url(&quot;client-assets/Dog_Statue.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Paw-fectly printed 🐾</span>
@@ -245,7 +255,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Gift_Box.png')"
+              style="
+                background-image: url(&quot;client-assets/Gift_Box.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Wrapped in layers 🎁</span>
@@ -264,7 +276,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Hand_Peace.png')"
+              style="
+                background-image: url(&quot;client-assets/Hand_Peace.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Peace, printed ✌️</span>
@@ -284,7 +298,7 @@
             <div
               class="product-image"
               style="
-                background-image: url('client-assets/Trash_Panda_Raccoon.png');
+                background-image: url(&quot;client-assets/Trash_Panda_Raccoon.png&quot;);
               "
             >
               <div class="product-overlay">
@@ -304,7 +318,9 @@
           <div class="product-card">
             <div
               class="product-image"
-              style="background-image: url('client-assets/Various_minis.png')"
+              style="
+                background-image: url(&quot;client-assets/Various_minis.png&quot;);
+              "
             >
               <div class="product-overlay">
                 <span class="pun-label">Small prints, big fun 🎨</span>
@@ -348,6 +364,11 @@
     </main>
 
     <footer>© 2026 Southern Layers 3D Printing, LLC</footer>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" style="display: none">
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+      <img alt="Expanded product view" />
+    </div>
 
     <script src="script.js"></script>
   </body>
