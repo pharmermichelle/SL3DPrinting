@@ -248,3 +248,29 @@ window.addEventListener("scroll", () => {
     }, 300);
   }
 })();
+
+/* ===== Temporary Closure Notice (Now–Mar 31, 2026) ===== */
+(function initClosureNotice() {
+  const notice = document.getElementById("site-notice");
+  if (!notice) return;
+
+  // Show now, hide after Mar 31, 2026 (local time)
+  const end = new Date(2026, 2, 31, 23, 59, 59); // Mar = 2
+  const now = new Date();
+
+  if (now > end) {
+    notice.remove();
+    return;
+  }
+
+  // Always show on every page load until end date
+  notice.style.display = "block";
+
+  // Close button (hides for THIS page view only)
+  const closeBtn = notice.querySelector(".site-notice__close");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      notice.style.display = "none";
+    });
+  }
+})();

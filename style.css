@@ -19,7 +19,8 @@ body {
   top: 0;
   z-index: 1000;
 
-  height: var(--header-height);
+  height: auto;
+  min-height: var(--header-height);
   width: 100%;
 
   background: linear-gradient(
@@ -1285,5 +1286,96 @@ input[name="business"] {
 @media (max-width: 900px) {
   .category-grid--sublimation {
     max-width: 100%;
+  }
+}
+
+/* ===== Temporary closure notice (inside header) ===== */
+.site-notice {
+  display: none; /* JS will enable until Mar 31 */
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 196, 6, 0.95),
+    rgba(20, 60, 68, 0.95)
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(14px);
+}
+
+.site-notice__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.65rem 1.5rem; /* match header padding */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.site-notice__text {
+  margin: 0;
+  color: #0b0f12;
+  font-weight: 650;
+  line-height: 1.35;
+  font-size: 0.95rem;
+}
+
+.site-notice__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.site-notice__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.site-notice__link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+.site-notice__close {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.55);
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.site-notice__close:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 720px) {
+  .site-notice__inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .site-notice__actions {
+    width: 100%;
+    justify-content: flex-end;
   }
 }
